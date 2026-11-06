@@ -2202,6 +2202,25 @@ span.foil-text{display:inline-block}
   .crs-tg,.crs-step-btn,.crs-input{transition:none}
 }
 
+
+/* ===== ajuste: sin zoom/estiramiento, tarjetas proporcionadas ===== */
+.ink-bg{-webkit-mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent);mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent)}
+.ink-bg > i{left:50%;right:auto;inset-block:-3%;width:min(112%,1000px);margin-left:calc(min(112%,1000px) / -2);background-size:100% auto;background-position:center top;animation:inkDrift2 30s ease-in-out infinite alternate}
+.ink-bg--hero > i{background-position:center 40%}
+.ink-bg--corner > i,.ink-bg--footer > i{background-position:center bottom}
+.ink-bg--oval > i{background-size:contain;background-position:center;inset-block:3%}
+@keyframes inkDrift2{0%{transform:translate3d(-1.2%,-.8%,0) scale(1) rotate(-.4deg)}100%{transform:translate3d(1.2%,.8%,0) scale(1.04) rotate(.4deg)}}
+.fam-photo{max-width:min(300px,76vw)}
+.fam-photo img{aspect-ratio:2/3;object-position:50% 40%}
+.family-grid--two{max-width:640px}
+.fam-card{padding:34px 24px 30px}
+.locs-grid{max-width:820px;gap:32px}
+.loc-card{padding:40px 28px 36px;max-width:400px;width:100%;margin-inline:auto}
+.itin-card{padding:18px 24px 22px}
+.bk-card{max-width:400px;margin-inline:auto}
+.gifts-grid--one{grid-template-columns:minmax(0,400px)}
+.hero-eyebrow{margin-bottom:14px}
+@media(min-width:900px){.hero-drift{background-size:auto 112%;background-position:50% 30%;-webkit-mask-image:linear-gradient(to right,transparent,#000 24%,#000 76%,transparent);mask-image:linear-gradient(to right,transparent,#000 24%,#000 76%,transparent)}}
 </style>
 </head>
 <body>
@@ -2292,28 +2311,17 @@ span.foil-text{display:inline-block}
     <div class="hero-frame"></div>
     <div class="hero-frame-corners"></div>
     <div class="hero-content">
-      <svg class="hero-ornament-top" viewBox="0 0 200 40" fill="none" aria-hidden="true">
-        <g stroke="var(--gold-soft)" stroke-width=".7" fill="none" opacity=".85">
-          <path d="M10 20 Q40 8 70 20"/>
-          <path d="M130 20 Q160 8 190 20"/>
-          <circle cx="100" cy="20" r="4" stroke="var(--gold-soft)"/>
-          <circle cx="100" cy="20" r="1.5" fill="var(--gold-soft)" stroke="none"/>
-          <path d="M75 20 L95 20"/>
-          <path d="M105 20 L125 20"/>
-        </g>
-      </svg>
+      
       <div class="hero-eyebrow" data-anim="hero-eyebrow">Nos casamos</div>
       <h1 class="hero-name">
         <span class="hero-name-p foil-text foil-text--dark">Celeste</span>
         <span class="hero-and foil-text foil-text--dark">&amp;</span>
         <span class="hero-name-l foil-text foil-text--dark">Gregorio</span>
       </h1>
-      <div class="hero-date" data-anim="hero-date">
-        <span>18</span><span class="sep">·</span><span>Diciembre</span><span class="sep">·</span><span>2026</span>
-      </div>
-      <div class="hero-place" data-anim="hero-place">Zinapécuaro · Michoacán</div>
+      
+      
     </div>
-    <div class="hero-scroll" aria-hidden="true">Desliza</div>
+    <div class="hero-scroll" aria-hidden="true"></div>
   </section>
 
   <!-- COUNTDOWN -->
@@ -3040,13 +3048,10 @@ function splitToWords(el){
 // ------ LAUNCH INVITATION â€" se dispara al terminar el sobre ------
 function launchInvitation(){
   const heroIn = gsap.timeline({defaults:{ease:'power4.out'},delay:.25});
-  heroIn.fromTo('.hero-ornament-top',{opacity:0,y:-20,scale:.9},{opacity:.85,y:0,scale:1,duration:1.2})
-    .fromTo('.hero-eyebrow',{opacity:0,y:14},{opacity:1,y:0,duration:1},'-=.7')
+  heroIn.fromTo('.hero-eyebrow',{opacity:0,y:14},{opacity:1,y:0,duration:1},'-=.7')
     .fromTo('.hero-name-p',{opacity:0,y:50},{opacity:1,y:0,duration:1.2,ease:'power4.out'},'-=.5')
     .fromTo('.hero-and',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.9,ease:'back.out(1.6)'},'-=.7')
     .fromTo('.hero-name-l',{opacity:0,y:50},{opacity:1,y:0,duration:1.2,ease:'power4.out'},'-=.7')
-    .fromTo('.hero-date > *',{opacity:0,y:12},{opacity:1,y:0,duration:.7,stagger:.06,ease:'power2.out'},'-=.4')
-    .fromTo('.hero-place',{opacity:0,y:10},{opacity:1,y:0,duration:.8},'-=.4')
     .fromTo('.hero-scroll',{opacity:0},{opacity:.7,duration:.8},'-=.3');
 
   startParticles();
@@ -3496,8 +3501,8 @@ function initSectionFades(){
     const a=edge(A,'bot'), b=edge(B,'top');
     const m=[0,1,2].map(k=>Math.round((a[k]+b[k])/2));
     const isHero = A.classList.contains('hero');
-    add(A,'bot',m,isHero?90:170);
-    add(B,'top',m,170);
+    add(A,'bot',m,isHero?140:260);
+    add(B,'top',m,260);
   }
 }
 initSectionFades();
