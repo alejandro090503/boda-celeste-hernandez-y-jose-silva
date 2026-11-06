@@ -2091,6 +2091,10 @@ body{font-size:18px}
 .fam-photo img{height:auto !important;aspect-ratio:2/3}
 img{height:auto}
 .cgal-photo img,.vc-look img{height:100%}
+.hero-name .foil-text{line-height:1;padding-top:.12em;padding-bottom:.12em;margin-top:-.12em;margin-bottom:-.12em}
+.hero-name .hero-and{font-size:clamp(44px,6vw,78px);line-height:.8;margin-top:-.06em;margin-bottom:-.06em}
+.hero-name{margin-bottom:0}
+@media(max-width:720px){.hero-name{font-size:70px}.hero-name .hero-and{font-size:46px}}
 </style>
 </head>
 <body>
@@ -2146,9 +2150,9 @@ img{height:auto}
 </nav>
 <!-- ENVELOPE OPENING SEQUENCE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
-  <img id="env-image" src="envelope.png" alt="">
+  <img id="env-image" src="sobre.jpg" alt="">
   <video id="env-video" muted playsinline preload="auto">
-    <source src="envelope.mp4" type="video/mp4">
+    <source src="sobre.mp4" type="video/mp4">
   </video>
   <div id="env-hint">Toca para abrir</div>
 </div>
@@ -2887,34 +2891,24 @@ function launchInvitation(){
     if(flashed) return;
     const dur = envVideo.duration;
     if(!isFinite(dur) || dur <= 0) return;
-    if(envVideo.currentTime >= dur - 2) triggerFlash();
+    if(envVideo.currentTime >= dur - 1.1) triggerFlash();
   }
 
   function triggerFlash(){
     if(flashed) return;
     flashed = true;
-
-    // Flash fade → 1 mientras el video termina
-    gsap.to(envFlash,{
-      opacity:1, duration:1.4, ease:'power2.inOut',
-      onComplete: ()=>{
-        envScreen.style.display = 'none';
-        wrap.style.visibility = 'visible';
-        launchInvitation();
-        const fab = document.getElementById('fab');
-        if(fab) fab.classList.add('is-visible');
-        // Subir volumen con fade al revelar la invitación
-        const bgAudio = document.getElementById('bg-audio');
-        if(bgAudio){
-          gsap.to(bgAudio,{volume:0.55,duration:2,ease:'power2.inOut'});
-          const mb = document.getElementById('music-btn');
-          if(mb) mb.classList.add('visible');
-        }
-        // Disolución revelando la invitación
-        gsap.to(envFlash,{opacity:0,duration:1.2,ease:'power2.inOut',delay:.1,
-          onComplete:()=>{envFlash.style.display='none'}});
-      }
-    });
+    // La invitación se revela por debajo mientras el sobre se disuelve
+    wrap.style.visibility = 'visible';
+    launchInvitation();
+    const bgAudio = document.getElementById('bg-audio');
+    if(bgAudio){
+      gsap.to(bgAudio,{volume:0.55,duration:2.4,ease:'power2.inOut'});
+      const mb = document.getElementById('music-btn');
+      if(mb) mb.classList.add('visible');
+    }
+    const fab = document.getElementById('fab');
+    if(fab) setTimeout(()=>fab.classList.add('is-visible'),900);
+    gsap.to(envScreen,{opacity:0,duration:1.8,ease:'power2.inOut',onComplete:()=>{envScreen.style.display='none'}});
   }
 
   envScreen.addEventListener('click', openEnvelope);
