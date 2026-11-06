@@ -2084,6 +2084,10 @@ body{font-size:18px}
 .loc-addr,.itin-desc,.gift-desc,.cgal-hint,.calb-lead,.rsvp-pases-label,.rsvp-dl,.rsvp-toggle-btn,.rsvp-input,.rsvp-editar-btn,.rsvp-gracias-sub,#rsvp-pases-note,#rsvp-feedback,.menu-foot,.vc-fig-sub{font-size:18px;font-weight:500}
 .eyebrow,.fam-role,.loc-type,.cd-lbl,.date-lbl,.loc-btn,.gift-btn,.rsvp-btn{font-size:14px;font-weight:700}
 .itin-time,.loc-time{font-size:23px}
+.ink-bg > i{-webkit-mask-image:linear-gradient(transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 22%,#000 78%,transparent 100%)}
+.ink-bg--oval > i{-webkit-mask-image:radial-gradient(ellipse 62% 56% at 50% 50%,#000 40%,transparent 100%);mask-image:radial-gradient(ellipse 62% 56% at 50% 50%,#000 40%,transparent 100%)}
+#ubicacion .ink-bg--oval{bottom:auto;height:46%}
+#ubicacion .ink-bg--lower{top:46%;bottom:0;height:auto}
 </style>
 </head>
 <body>
@@ -2286,6 +2290,7 @@ body{font-size:18px}
   <!-- CELEBRACIÓN: CEREMONIA + ITINERARIO (sección unificada) -->
   <section class="section-paper celebracion locs itinerary ink-host" id="ubicacion">
     <div class="ink-bg ink-bg--oval" aria-hidden="true"><i></i></div>
+    <div class="ink-bg ink-bg--top ink-bg--flip ink-bg--lower" aria-hidden="true"><i></i></div>
     <span class="mono-wm" aria-hidden="true">C &amp; G</span>
     <div class="container">
 
