@@ -2110,6 +2110,9 @@ img{height:auto}
 .date-hero::after{animation:dateDrift 24s ease-in-out infinite alternate}
 @keyframes dateDrift{0%{transform:translate3d(-2%,-1.5%,0) scale(1.12)}100%{transform:translate3d(2%,1.5%,0) scale(1.2)}}
 @media(prefers-reduced-motion:reduce){.fam-photo,.date-hero::after{animation:none}}
+footer::before{z-index:-2}
+footer .sec-fade--top{height:190px !important}
+footer .footer-inner{padding-top:60px}
 </style>
 </head>
 <body>
@@ -2773,7 +2776,7 @@ img{height:auto}
 
 
   <!-- FOOTER -->
-  <footer data-top="#263E0F" data-bot="#0F1A10">
+  <footer data-top="#FFFFFF" data-bot="#0F1A10">
     <div class="container footer-inner">
       <svg class="footer-ornament" viewBox="0 0 260 60" fill="none" aria-hidden="true">
         <g stroke="var(--gold-soft)" stroke-width=".8" fill="none">
