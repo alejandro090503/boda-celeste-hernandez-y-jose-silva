@@ -1368,8 +1368,19 @@ span.foil-text{display:inline-block}
 .menu-foot{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);text-align:center;padding-left:.28em}
 
 /* música: pequeña y discreta, esquina contraria */
-#music-btn{width:44px;height:44px;right:auto;left:14px;bottom:max(14px,env(safe-area-inset-bottom))}
-#music-btn .vinyl-tonearm,#music-btn .vinyl-label-text{display:none}
+#music-btn{width:84px;height:84px;right:auto;left:16px;bottom:max(18px,env(safe-area-inset-bottom));box-shadow:0 10px 26px rgba(10,16,4,.5),0 0 0 2px rgba(212,175,55,.55),0 0 0 6px rgba(212,175,55,.12)}
+#music-btn .vinyl-tonearm{display:block;top:-9px;right:-10px;width:34px;height:48px}
+.vinyl-tonearm-line{background:linear-gradient(to bottom,#8A6A12,#E8D48A 40%,#8A6A12);width:3px;right:6px}
+.vinyl-tonearm-head{background:#D4AF37;width:7px;height:9px}
+.vinyl-tonearm-pivot{background:radial-gradient(circle,#F4E3A0,#8A6A12);width:10px;height:10px;right:3px}
+.vinyl-disc::after{content:"";position:absolute;left:50%;top:50%;width:36%;height:36%;transform:translate(-50%,-50%);border-radius:50%;z-index:1;
+  background:radial-gradient(circle at 34% 28%,#FFF3C4 0%,#E8D48A 30%,#D4AF37 62%,#8A6A12 100%);box-shadow:0 0 0 1.5px rgba(40,30,4,.5),inset 0 0 6px rgba(255,255,255,.35)}
+#music-btn .vinyl-label-text{display:block;z-index:2;width:34px;font-family:var(--display);font-style:italic;font-weight:700;font-size:14px;color:#2d2204;opacity:1;line-height:1;text-align:center}
+#music-btn .vinyl-label-text small{font-family:var(--display);font-size:7px;letter-spacing:.14em;margin-top:2px;opacity:.8}
+.vinyl-hole{z-index:3;width:5px;height:5px;margin-top:-17px;display:none}
+#music-btn .vinyl-icons{width:20px;height:20px;top:auto;bottom:-3px;left:auto;right:-3px;transform:none;z-index:4;background:#D4AF37;border-radius:50%;padding:4px;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+#music-btn .vinyl-icons svg{fill:#2d2204}
+
 
 /* legibilidad (adultos mayores) */
 .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.36em;padding-left:.36em}
@@ -2095,6 +2106,10 @@ img{height:auto}
 .hero-name .hero-and{font-size:clamp(44px,6vw,78px);line-height:.8;margin-top:-.06em;margin-bottom:-.06em}
 .hero-name{margin-bottom:0}
 @media(max-width:720px){.hero-name{font-size:70px}.hero-name .hero-and{font-size:46px}}
+.fam-photo{animation:levitate 6.5s ease-in-out infinite}
+.date-hero::after{animation:dateDrift 24s ease-in-out infinite alternate}
+@keyframes dateDrift{0%{transform:translate3d(-2%,-1.5%,0) scale(1.12)}100%{transform:translate3d(2%,1.5%,0) scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.fam-photo,.date-hero::after{animation:none}}
 </style>
 </head>
 <body>
