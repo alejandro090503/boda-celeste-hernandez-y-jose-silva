@@ -4599,7 +4599,7 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
    - Si el archivo de la cancion falla (404, host caido, HTML en vez de mp3) se usa una de respaldo. */
 (function(){
   if(window.__elyAudio2) return; window.__elyAudio2=1;
-  var FALLBACK='https://boda-isaac-y-claudia.vercel.app/cancion.mp3';
+  var FALLBACK='https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-alan-y-kenia/cancion.mp3';
   var forced=false, gestured=false;
   function A(){ return document.querySelector('audio'); }
   function toFallback(a){
