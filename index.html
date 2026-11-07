@@ -2113,6 +2113,36 @@ img{height:auto}
 footer::before{z-index:-2}
 footer .sec-fade--top{height:190px !important}
 footer .footer-inner{padding-top:60px}
+
+.vc-pair{display:flex;justify-content:center;gap:40px;margin-top:6px}
+.vc-dot-item{display:flex;flex-direction:column;align-items:center;gap:12px}
+.vc-dot{width:76px;height:76px;border-radius:50%;position:relative;background:var(--c);
+  box-shadow:inset 0 3px 8px rgba(255,255,255,.45),inset 0 -6px 14px rgba(0,0,0,.28),0 12px 26px -10px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.08)}
+.vc-dot::after{content:"";position:absolute;top:9%;left:15%;width:46%;height:36%;border-radius:55% 50% 45% 50%/62% 60% 40% 38%;
+  background:radial-gradient(ellipse at 38% 32%,rgba(255,255,255,.85),rgba(255,255,255,.25) 55%,transparent 100%)}
+.vc-dot--light{box-shadow:inset 0 3px 8px rgba(255,255,255,.9),inset 0 -6px 14px rgba(0,0,0,.16),0 12px 26px -10px rgba(0,0,0,.35),0 0 0 2px rgba(138,106,18,.45)}
+.vc-dot-name{font-family:var(--sans);font-weight:700;font-size:19px;color:var(--ink);letter-spacing:.04em}
+.loc-note{max-width:560px;margin:34px auto 44px;text-align:center;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(21px,5.4vw,25px);line-height:1.45;color:var(--accent-deep);display:flex;flex-direction:column;gap:2px;position:relative;padding:22px 0}
+.loc-note::before,.loc-note::after{content:"";position:absolute;left:50%;width:70px;height:1px;margin-left:-35px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.loc-note::before{top:0}.loc-note::after{bottom:0}
+
+/* ===== DESTELLO · apertura ===== */
+#flare{position:fixed;inset:0;z-index:10000;pointer-events:none;overflow:hidden;visibility:hidden;mix-blend-mode:screen}
+#flare i,#flare svg.fl-star,#flare svg.fl-sp{position:absolute;display:block}
+.fl-bloom{left:50%;top:36%;width:96vmax;height:96vmax;margin:-48vmax 0 0 -48vmax;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(255,252,240,.95) 0%,rgba(255,238,178,.6) 7%,rgba(240,205,110,.28) 20%,rgba(212,175,55,.1) 40%,transparent 62%)}
+.fl-glow{left:-10%;width:120%;top:36%;height:150px;margin-top:-75px;opacity:0;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,222,140,.5),rgba(255,200,100,.15) 55%,transparent 75%)}
+.fl-streak{left:-10%;width:120%;top:36%;height:2px;margin-top:-1px;opacity:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,214,130,0) 6%,rgba(255,224,150,.85) 34%,#fff 50%,rgba(255,224,150,.85) 66%,rgba(255,214,130,0) 94%,transparent 100%);
+  box-shadow:0 0 14px 2px rgba(255,220,140,.5)}
+.fl-sweep{top:-20%;bottom:-20%;left:0;width:60%;opacity:0;transform:skewX(-14deg);
+  background:linear-gradient(100deg,transparent 0%,rgba(255,244,214,0) 18%,rgba(255,244,214,.26) 42%,rgba(255,252,238,.5) 50%,rgba(255,244,214,.26) 58%,rgba(255,244,214,0) 82%,transparent 100%)}
+.fl-star{left:50%;top:36%;width:min(70vw,420px);height:min(70vw,420px);margin:calc(min(70vw,420px) / -2) 0 0 calc(min(70vw,420px) / -2);opacity:0}
+.fl-ghost{width:70px;height:70px;border-radius:50%;opacity:0;left:50%;top:36%;margin:-35px 0 0 -35px;
+  background:radial-gradient(circle,transparent 52%,var(--g) 58%,transparent 72%)}
+.fl-sp{width:34px;height:34px;opacity:0}
+@media(prefers-reduced-motion:reduce){#flare{display:none}}
 </style>
 </head>
 <body>
@@ -2175,6 +2205,14 @@ footer .footer-inner{padding-top:60px}
   <div id="env-hint">Toca para abrir</div>
 </div>
 <div id="env-flash" aria-hidden="true"></div>
+<div id="flare" aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute"><defs><radialGradient id="flg"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#FFF1C2"/><stop offset="1" stop-color="#E8C45A" stop-opacity="0"/></radialGradient></defs></svg>
+  <i class="fl-bloom"></i><i class="fl-glow"></i><i class="fl-streak"></i><i class="fl-sweep"></i>
+  <svg class="fl-star" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg>
+  <i class="fl-ghost" style="--g:rgba(255,214,140,.55)"></i><i class="fl-ghost" style="--g:rgba(255,170,150,.4);width:46px;height:46px;margin:-23px 0 0 -23px"></i><i class="fl-ghost" style="--g:rgba(150,190,255,.38);width:110px;height:110px;margin:-55px 0 0 -55px"></i>
+  <svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg>
+</div>
+
 
 <!-- LOADER -->
 <div id="loader">
@@ -2265,8 +2303,6 @@ footer .footer-inner{padding-top:60px}
             <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
           </g>
         </svg>
-        <p class="fam-verse">&ldquo;Las muchas aguas no podrán apagar el amor,<br>ni lo ahogarán los ríos.&rdquo;</p>
-        <p class="fam-verse-cite">Cantares · 8 : 7</p>
         <div class="fam-intro-rule" aria-hidden="true"></div>
         <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
         <figure class="fam-photo"><img src="fotos/f06.jpg" alt="Celeste y Gregorio con el ramo" width="1067" height="1600"></figure>
@@ -2297,7 +2333,7 @@ footer .footer-inner{padding-top:60px}
       </div>
       <div style="text-align:center;margin-top:72px">
         <div class="eyebrow eyebrow--noline">El valioso apoyo de nuestros</div>
-        <h2 class="foil-text">Nuestros <em>Padrinos</em></h2>
+        <h2 class="foil-text">Padrinos <em>de</em> Velación</h2>
       </div>
       <div class="family-grid family-grid--one">
         <article class="fam-card">
@@ -2305,7 +2341,7 @@ footer .footer-inner{padding-top:60px}
           <svg class="fam-corner fam-corner--tr" viewBox="0 0 30 30" fill="none"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M2 12 L2 2 L12 2"/><path d="M5 15 L5 5 L15 5" opacity=".55"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/></g></svg>
           <svg class="fam-corner fam-corner--bl" viewBox="0 0 30 30" fill="none"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M2 12 L2 2 L12 2"/><path d="M5 15 L5 5 L15 5" opacity=".55"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/></g></svg>
           <svg class="fam-corner fam-corner--br" viewBox="0 0 30 30" fill="none"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M2 12 L2 2 L12 2"/><path d="M5 15 L5 5 L15 5" opacity=".55"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/></g></svg>
-          <div class="fam-role">Padrinos</div>
+          <div class="fam-role">Padrinos de Velación</div>
           <div class="fam-names">Mónica Barajas Estrada<br><span class="amp-gold">&amp;</span><br>Miguel Ángel Rubio Moreno</div>
         </article>
       </div>
@@ -2324,6 +2360,8 @@ footer .footer-inner{padding-top:60px}
         <div class="eyebrow">Acompáñanos</div>
         <h2 class="foil-text">¿Dónde <em>y</em> cuándo?</h2>
       </div>
+
+      <p class="loc-note"><span>La misa es el momento más importante para nosotros.</span><span>Te pedimos de favor que no faltes.</span></p>
 
       <!-- UBICACIONES -->
       <div class="locs-grid">
@@ -2450,7 +2488,6 @@ footer .footer-inner{padding-top:60px}
   <div class="container">
     <p class="eyebrow">Código de vestimenta</p>
     <h2 id="vcTitle" class="vc-title foil-text">Formal</h2>
-    <p class="vc-note">Acompáñanos vestido para la ocasión</p>
 
     <!-- Dibujos: 2 columnas, sin tarjetas -->
     <div class="vc-figs">
@@ -2461,7 +2498,6 @@ footer .footer-inner{padding-top:60px}
         </div>
         <figcaption>
           <span class="vc-fig-ttl">Caballeros</span>
-          <span class="vc-fig-sub">Traje formal</span>
         </figcaption>
       </figure>
       <figure class="vc-fig">
@@ -2471,7 +2507,6 @@ footer .footer-inner{padding-top:60px}
         </div>
         <figcaption>
           <span class="vc-fig-ttl">Damas</span>
-          <span class="vc-fig-sub">Vestido largo</span>
         </figcaption>
       </figure>
     </div>
@@ -2500,9 +2535,9 @@ footer .footer-inner{padding-top:60px}
          Edita data-colors (n colores). Con 1 color queda fija. -->
     <div class="vc-avoid">
       <p class="vc-avoid-lbl">Por favor evitar estos colores</p>
-      <div class="vc-orb-wrap" data-colors='[{"hex":"#E22400","name":"Rojo"},{"hex":"#EBEBEB","name":"Blanco"}]'>
-        <!-- el JS genera aquí: bolita con capas + nombres; y la fila para reduced-motion -->
-        <noscript><p class="vc-orb-fallback">Rojo · Blanco</p></noscript>
+      <div class="vc-pair">
+        <div class="vc-dot-item"><span class="vc-dot" style="--c:#E22400"></span><span class="vc-dot-name">Rojo</span></div>
+        <div class="vc-dot-item"><span class="vc-dot vc-dot--light" style="--c:#EBEBEB"></span><span class="vc-dot-name">Blanco</span></div>
       </div>
     </div>
   </div>
@@ -2705,22 +2740,6 @@ footer .footer-inner{padding-top:60px}
 
 
   <!-- KIDS POLICY -->
-  <section class="section-paper kids-policy" id="adultos">
-    <div class="container kids-inner">
-      <div class="eyebrow">Una nota cariñosa</div>
-      <h2 class="foil-text">Una celebración <em>de</em> adultos</h2>
-      <div class="kids-icon">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
-          <circle cx="36" cy="36" r="28" style="--len:176"/>
-          <path d="M36 16 Q24 28 24 40 Q24 52 36 56 Q48 52 48 40 Q48 28 36 16 Z" style="--len:180" fill="var(--gold-soft)" fill-opacity=".18"/>
-          <path d="M36 26 L36 42" style="--len:16"/>
-          <circle cx="36" cy="46" r="2" style="--len:14" fill="var(--gold)"/>
-        </svg>
-      </div>
-      <p class="kids-text">Agradecemos su comprensión al considerar este evento exclusivamente para adultos.</p>
-    </div>
-  </section>
-
   <!-- ALBUM QR -->
     <!-- ÁLBUM DE FOTOS (QR → /album → panel-invitados.vercel.app/subir/boda-celeste-hernandez-y-jose-silva) -->
   <section class="section-bg calb" id="album" aria-label="Álbum de fotos">
@@ -2853,6 +2872,40 @@ function splitToWords(el){
 // ------ LOADER + HERO INTRO ------
 
 
+// ------ DESTELLO DE APERTURA ------
+function startFlare(){
+  const f = document.getElementById('flare'); if(!f || prefersReduced) return;
+  const q = x => f.querySelector(x), qa = x => f.querySelectorAll(x);
+  f.style.visibility = 'visible';
+  const bloom=q('.fl-bloom'), glow=q('.fl-glow'), streak=q('.fl-streak'), sweep=q('.fl-sweep'), star=q('.fl-star'), ghosts=qa('.fl-ghost'), sps=qa('.fl-sp');
+  gsap.set([bloom,glow,streak,sweep,star,ghosts,sps],{opacity:0});
+  gsap.set(bloom,{scale:.25}); gsap.set(streak,{scaleX:0}); gsap.set(glow,{scaleX:.3}); gsap.set(star,{scale:.2,rotate:-25}); gsap.set(sweep,{xPercent:-130});
+  const tl = gsap.timeline({delay:.8, onComplete:()=>{ f.style.visibility='hidden'; }});
+  window.__flare = tl;
+  tl.to(bloom,{opacity:.85,scale:.85,duration:1,ease:'power2.out'},0)
+    .to(bloom,{opacity:0,scale:1.2,duration:1.8,ease:'power2.inOut'},1)
+    .to(glow,{opacity:1,scaleX:1,duration:.9,ease:'expo.out'},.1)
+    .to(glow,{opacity:0,duration:1.5,ease:'power2.inOut'},1)
+    .to(streak,{opacity:1,scaleX:1,duration:.85,ease:'expo.out'},.1)
+    .to(streak,{opacity:0,duration:1.3,ease:'power2.inOut'},1)
+    .to(star,{opacity:1,scale:1,rotate:0,duration:.9,ease:'expo.out'},.15)
+    .to(star,{opacity:0,scale:.55,rotate:35,duration:1.4,ease:'power2.in'},1.05)
+    .to(sweep,{opacity:1,duration:.8,ease:'power1.out'},.2)
+    .to(sweep,{xPercent:250,duration:2.6,ease:'power1.inOut'},.2)
+    .to(sweep,{opacity:0,duration:1,ease:'power1.in'},1.8);
+  ghosts.forEach((g,i)=>{
+    tl.fromTo(g,{x:-30*(i+1),opacity:0},{x:46*(i+1),opacity:.9,duration:1.6,ease:'power1.inOut'},.45+i*.08)
+      .to(g,{opacity:0,duration:.8,ease:'power1.in'},1.5+i*.08);
+  });
+  const pts=[[18,30],[78,26],[30,48],[70,44],[50,58],[12,52],[88,54]];
+  sps.forEach((p,i)=>{
+    gsap.set(p,{left:pts[i][0]+'%',top:pts[i][1]+'%',xPercent:-50,yPercent:-50,scale:0,rotate:0});
+    const sz = .6 + (i%3)*.35;
+    tl.to(p,{opacity:1,scale:sz,rotate:45,duration:.55,ease:'back.out(2)'},.7+i*.22)
+      .to(p,{opacity:0,scale:0,rotate:90,duration:.7,ease:'power2.in'},1.25+i*.22);
+  });
+}
+
 // ------ LAUNCH INVITATION â€" se dispara al terminar el sobre ------
 function launchInvitation(){
   const heroIn = gsap.timeline({defaults:{ease:'power4.out'},delay:.25});
@@ -2863,6 +2916,7 @@ function launchInvitation(){
     .fromTo('.hero-scroll',{opacity:0},{opacity:.7,duration:.8},'-=.3');
 
   startParticles();
+  startFlare();
   if(window.ScrollTrigger) ScrollTrigger.refresh();
 }
 
