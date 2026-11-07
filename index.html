@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Celeste & Gregorio · 18 · 12 · 2026">
 <meta name="twitter:description" content="Nos casamos el viernes 18 de diciembre de 2026 en Zinapécuaro, Michoacán — Abre tu invitación">
 <meta name="twitter:image" content="https://boda-celeste-hernandez-y-jose-silva.vercel.app/og.jpg">
-<link rel="preload" as="image" href="fotos/f12.jpg">
+<link rel="preload" as="image" href="fotos/f08.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Pinyon+Script&family=Italiana&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -1142,7 +1142,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 }
 #env-flash{
   position:fixed;inset:0;z-index:9999;
-  background:#fff;opacity:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 36%,#FFFFFF 0%,#FFF9EA 38%,#FFF1CF 100%);opacity:0;pointer-events:none;
 }
 
 /* ============ LIGHTBOX â€" rueda de fotos ============ */
@@ -2143,6 +2143,34 @@ footer .footer-inner{padding-top:60px}
   background:radial-gradient(circle,transparent 52%,var(--g) 58%,transparent 72%)}
 .fl-sp{width:34px;height:34px;opacity:0}
 @media(prefers-reduced-motion:reduce){#flare{display:none}}
+
+/* ===== mesa de regalos en el evento ===== */
+.gifts-grid--one{display:grid;gap:26px}
+.ev-gift{max-width:400px;margin:0 auto;padding:30px 26px 32px;text-align:center;background:#fff;border:1px solid var(--hair-gold);position:relative;
+  box-shadow:0 1px 2px rgba(38,62,15,.05),0 14px 34px -14px rgba(38,62,15,.22)}
+.ev-gift::before{content:"";position:absolute;inset:8px;border:1px solid var(--hair-gold);opacity:.55;pointer-events:none}
+.ev-gift-ico{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-deep);
+  border:1px solid var(--hair-gold);background:color-mix(in srgb,var(--gold-soft) 28%,transparent)}
+.ev-gift-ttl{font-family:var(--display);font-weight:600;font-size:25px;line-height:1.25;color:var(--accent-deep);margin-bottom:8px}
+.ev-gift-txt{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.5;color:var(--ink)}
+
+/* ===== bandas de foto (efecto "Nuestro gran día") ===== */
+.pband{position:relative;isolation:isolate;overflow:hidden;height:min(92svh,820px);background:var(--bg)}
+.pb-img{position:absolute;inset:0;z-index:-2;
+  -webkit-mask-image:linear-gradient(transparent 0,rgba(0,0,0,.18) 14%,rgba(0,0,0,.6) 28%,#000 42%,#000 58%,rgba(0,0,0,.6) 72%,rgba(0,0,0,.18) 86%,transparent 100%);
+          mask-image:linear-gradient(transparent 0,rgba(0,0,0,.18) 14%,rgba(0,0,0,.6) 28%,#000 42%,#000 58%,rgba(0,0,0,.6) 72%,rgba(0,0,0,.18) 86%,transparent 100%)}
+.pb-img > i{position:absolute;inset:-6% -4%;background-repeat:no-repeat;background-size:cover;background-position:var(--pos,50% 40%);
+  animation:pbDrift 24s ease-in-out infinite alternate}
+.pb-img > i::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(80,130,108,.34),rgba(38,62,15,.18) 50%,rgba(80,130,108,.34))}
+.pb-sheen{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.pb-sheen::before{content:"";position:absolute;top:0;bottom:0;left:-50%;width:200%;mix-blend-mode:soft-light;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,246,220,.7) 50%,transparent 60%);animation:heroSheen 11s ease-in-out infinite}
+@keyframes pbDrift{0%{transform:translate3d(-1.2%,-.8%,0) scale(1.04)}100%{transform:translate3d(1.2%,1%,0) scale(1.12)}}
+@media(min-width:900px){
+  .pb-img > i{inset:-4% 0;background-size:auto 108%;background-position:50% var(--py,40%);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 26%,#000 74%,transparent);mask-image:linear-gradient(to right,transparent,#000 26%,#000 74%,transparent)}
+}
+@media(prefers-reduced-motion:reduce){.pb-img>i,.pb-sheen::before{animation:none}}
 </style>
 </head>
 <body>
@@ -2236,7 +2264,7 @@ footer .footer-inner{padding-top:60px}
 
   <!-- HERO -->
   <section class="hero" id="inicio" data-bot="#0F1808">
-    <div class="hero-bg"><i class="hero-drift" style="background-image:url('fotos/f12.jpg');--hero-pos:50% 42%"></i><i class="hero-sheen"></i></div>
+    <div class="hero-bg"><i class="hero-drift" style="background-image:url('fotos/f08.jpg');--hero-pos:50% 30%"></i><i class="hero-sheen"></i></div>
     <div class="hero-veil"></div>
     <div class="hero-frame"></div>
     <div class="hero-frame-corners"></div>
@@ -2248,6 +2276,7 @@ footer .footer-inner{padding-top:60px}
         <span class="hero-and foil-text foil-text--dark">&amp;</span>
         <span class="hero-name-l foil-text foil-text--dark">Gregorio</span>
       </h1>
+      <div class="hero-date" data-anim="hero-date"><span>18</span><span class="sep">·</span><span>Diciembre</span><span class="sep">·</span><span>2026</span></div>
       
       
     </div>
@@ -2349,6 +2378,11 @@ footer .footer-inner{padding-top:60px}
   </section>
 
   <!-- CELEBRACIÓN: CEREMONIA + ITINERARIO (sección unificada) -->
+  <section class="pband" aria-hidden="true" data-top="#FBFAF6" data-bot="#FBFAF6">
+    <div class="pb-img"><i style="background-image:url('fotos/f04.jpg');--pos:50% 38%;--py:38%"></i></div>
+    <div class="pb-sheen"></div>
+  </section>
+
   <section class="section-paper celebracion locs itinerary ink-host" id="ubicacion">
     <div class="ink-bg ink-bg--oval" aria-hidden="true"><i></i></div>
     <div class="ink-bg ink-bg--top ink-bg--flip ink-bg--lower" aria-hidden="true"><i></i></div>
@@ -2546,6 +2580,11 @@ footer .footer-inner{padding-top:60px}
 
   <!-- GALLERY â€" RUEDA DE LA FORTUNA -->
     <!-- GALERÍA · carrusel 3D (base: boda-veronica-y-andres, rueda) -->
+  <section class="pband" aria-hidden="true" data-top="#FBFAF6" data-bot="#FBFAF6">
+    <div class="pb-img"><i style="background-image:url('fotos/f25.jpg');--pos:50% 30%;--py:34%"></i></div>
+    <div class="pb-sheen"></div>
+  </section>
+
   <section class="section-surface cgal" id="galeria" aria-label="Galería de fotos">
     <div class="container cgal-head">
       <div class="eyebrow">Momentos</div>
@@ -2674,6 +2713,11 @@ footer .footer-inner{padding-top:60px}
   <p class="bk-toast" role="status" aria-live="polite"></p>
 </div>
 
+        <article class="ev-gift">
+          <div class="ev-gift-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8C10 4 6 4.5 7 7c.5 1.3 3 1 5 1zM12 8c2-4 6-3.5 5-1-.5 1.3-3 1-5 1z"/></svg></div>
+          <h3 class="ev-gift-ttl">Mesa de regalos en el evento</h3>
+          <p class="ev-gift-txt">También contaremos con una mesa de regalos física el día de la celebración.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -2742,6 +2786,11 @@ footer .footer-inner{padding-top:60px}
   <!-- KIDS POLICY -->
   <!-- ALBUM QR -->
     <!-- ÁLBUM DE FOTOS (QR → /album → panel-invitados.vercel.app/subir/boda-celeste-hernandez-y-jose-silva) -->
+  <section class="pband" aria-hidden="true" data-top="#FBFAF6" data-bot="#FBFAF6">
+    <div class="pb-img"><i style="background-image:url('fotos/f12.jpg');--pos:50% 42%;--py:42%"></i></div>
+    <div class="pb-sheen"></div>
+  </section>
+
   <section class="section-bg calb" id="album" aria-label="Álbum de fotos">
     <div class="ink-bg ink-bg--hero ink-bg--flip ink-bg--soft" aria-hidden="true"><i></i></div>
     <div class="container calb-inner">
@@ -2880,7 +2929,7 @@ function startFlare(){
   const bloom=q('.fl-bloom'), glow=q('.fl-glow'), streak=q('.fl-streak'), sweep=q('.fl-sweep'), star=q('.fl-star'), ghosts=qa('.fl-ghost'), sps=qa('.fl-sp');
   gsap.set([bloom,glow,streak,sweep,star,ghosts,sps],{opacity:0});
   gsap.set(bloom,{scale:.25}); gsap.set(streak,{scaleX:0}); gsap.set(glow,{scaleX:.3}); gsap.set(star,{scale:.2,rotate:-25}); gsap.set(sweep,{xPercent:-130});
-  const tl = gsap.timeline({delay:.8, onComplete:()=>{ f.style.visibility='hidden'; }});
+  const tl = gsap.timeline({delay:.05, onComplete:()=>{ f.style.visibility='hidden'; }});
   window.__flare = tl;
   tl.to(bloom,{opacity:.85,scale:.85,duration:1,ease:'power2.out'},0)
     .to(bloom,{opacity:0,scale:1.2,duration:1.8,ease:'power2.inOut'},1)
@@ -2913,6 +2962,7 @@ function launchInvitation(){
     .fromTo('.hero-name-p',{opacity:0,y:50},{opacity:1,y:0,duration:1.2,ease:'power4.out'},'-=.5')
     .fromTo('.hero-and',{opacity:0,scale:.6},{opacity:1,scale:1,duration:.9,ease:'back.out(1.6)'},'-=.7')
     .fromTo('.hero-name-l',{opacity:0,y:50},{opacity:1,y:0,duration:1.2,ease:'power4.out'},'-=.7')
+    .fromTo('.hero-date > *',{opacity:0,y:12},{opacity:1,y:0,duration:.8,stagger:.06,ease:'power2.out'},'-=.4')
     .fromTo('.hero-scroll',{opacity:0},{opacity:.7,duration:.8},'-=.3');
 
   startParticles();
@@ -2963,24 +3013,30 @@ function launchInvitation(){
     if(flashed) return;
     const dur = envVideo.duration;
     if(!isFinite(dur) || dur <= 0) return;
-    if(envVideo.currentTime >= dur - 1.1) triggerFlash();
+    if(envVideo.currentTime >= dur - 1.25) triggerFlash();
   }
 
   function triggerFlash(){
     if(flashed) return;
     flashed = true;
-    // La invitación se revela por debajo mientras el sobre se disuelve
-    wrap.style.visibility = 'visible';
-    launchInvitation();
-    const bgAudio = document.getElementById('bg-audio');
-    if(bgAudio){
-      gsap.to(bgAudio,{volume:0.55,duration:2.4,ease:'power2.inOut'});
-      const mb = document.getElementById('music-btn');
-      if(mb) mb.classList.add('visible');
-    }
-    const fab = document.getElementById('fab');
-    if(fab) setTimeout(()=>fab.classList.add('is-visible'),900);
-    gsap.to(envScreen,{opacity:0,duration:1.8,ease:'power2.inOut',onComplete:()=>{envScreen.style.display='none'}});
+    // 1) el sobre se funde en luz
+    envFlash.style.display = 'block';
+    gsap.to(envFlash,{opacity:1,duration:1.05,ease:'power2.in',onComplete:()=>{
+      // 2) en el punto más luminoso se revela la invitación
+      envScreen.style.display = 'none';
+      wrap.style.visibility = 'visible';
+      launchInvitation();
+      const bgAudio = document.getElementById('bg-audio');
+      if(bgAudio){
+        gsap.to(bgAudio,{volume:0.55,duration:2.4,ease:'power2.inOut'});
+        const mb = document.getElementById('music-btn');
+        if(mb) mb.classList.add('visible');
+      }
+      const fab = document.getElementById('fab');
+      if(fab) setTimeout(()=>fab.classList.add('is-visible'),900);
+      // 3) la luz se retira suave dejando el destello
+      gsap.to(envFlash,{opacity:0,duration:2.1,ease:'power2.out',delay:.05,onComplete:()=>{envFlash.style.display='none'}});
+    }});
   }
 
   envScreen.addEventListener('click', openEnvelope);
