@@ -2171,6 +2171,24 @@ footer .footer-inner{padding-top:60px}
     -webkit-mask-image:linear-gradient(to right,transparent,#000 26%,#000 74%,transparent);mask-image:linear-gradient(to right,transparent,#000 26%,#000 74%,transparent)}
 }
 @media(prefers-reduced-motion:reduce){.pb-img>i,.pb-sheen::before{animation:none}}
+
+/* ===== itinerario compacto ===== */
+.itin-list-wrap{max-width:480px;margin:6px auto 0;padding:0 4px}
+.itin-list{list-style:none;margin:0;padding:0}
+.itin-list li{display:grid;grid-template-columns:140px 1fr;gap:12px;align-items:baseline;padding:13px 4px;position:relative;
+  border-bottom:1px solid transparent;
+  background-image:linear-gradient(to right,transparent,var(--hair-gold) 18%,var(--hair-gold) 82%,transparent);background-size:100% 1px;background-repeat:no-repeat;background-position:bottom}
+.itin-list li:last-child{background-image:none}
+.il-time{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.25;color:var(--gold-deep);text-align:right}
+.il-name{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.25;color:var(--accent-deep);display:flex;flex-direction:column;gap:2px;text-align:left}
+.il-name small{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--ink-soft);line-height:1.3}
+@media(max-width:380px){.itin-list li{grid-template-columns:128px 1fr;gap:10px}.il-time{font-size:15.5px}.il-name{font-size:19px}}
+
+/* ===== menos largo: espacios más compactos ===== */
+.section-bg,.section-surface,.section-paper{padding:min(9vh,76px) 0}
+.pband{height:min(64svh,560px)}
+.loc-note{margin:22px auto 28px}
+.locs-grid{margin-bottom:44px}
 </style>
 </head>
 <body>
@@ -2236,7 +2254,6 @@ footer .footer-inner{padding-top:60px}
 <div id="flare" aria-hidden="true">
   <svg width="0" height="0" style="position:absolute"><defs><radialGradient id="flg"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#FFF1C2"/><stop offset="1" stop-color="#E8C45A" stop-opacity="0"/></radialGradient></defs></svg>
   <i class="fl-bloom"></i><i class="fl-glow"></i><i class="fl-streak"></i><i class="fl-sweep"></i>
-  <svg class="fl-star" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg>
   <i class="fl-ghost" style="--g:rgba(255,214,140,.55)"></i><i class="fl-ghost" style="--g:rgba(255,170,150,.4);width:46px;height:46px;margin:-23px 0 0 -23px"></i><i class="fl-ghost" style="--g:rgba(150,190,255,.38);width:110px;height:110px;margin:-55px 0 0 -55px"></i>
   <svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg><svg class="fl-sp" viewBox="-100 -100 200 200" aria-hidden="true"><path d="M0-100C1.2-14 14-1.2 100 0 14 1.2 1.2 14 0 100-1.2 14-14 1.2-100 0-14-1.2-1.2-14 0-100Z" fill="url(#flg)"/><circle r="9" fill="#fff"/></svg>
 </div>
@@ -2435,82 +2452,17 @@ footer .footer-inner{padding-top:60px}
       <div class="cer-eyebrow cer-eyebrow--center" id="itinerario">Itinerario</div>
       <h3 class="cel-h3"><span class="foil-text">Nuestro <em>gran</em> día</span></h3>
 
-      <div class="itin-wrap" id="itin">
-        <div class="itin-track" aria-hidden="true">
-          <div class="itin-track-glow" id="itin-glow"></div>
-          <div class="itin-track-mid" id="itin-mid"></div>
-          <div class="itin-track-fill" id="itin-fill"></div>
-          <div class="itin-track-shimmer" id="itin-shimmer"></div>
-        </div>
-        <ul class="itin-events">
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">1:00 pm</div>
-              <div class="itin-name">Ceremonia religiosa</div>
-              <div class="itin-desc">Templo San Pedro y San Pablo</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">2:30 pm</div>
-              <div class="itin-name">Recepción</div>
-              <div class="itin-desc">Salón Punta del Cielo</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">3:00 pm</div>
-              <div class="itin-name">Entrada y brindis de los novios</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">3:00 – 4:30 pm</div>
-              <div class="itin-name">Comida</div>
-              <div class="itin-desc">Cantante · Zirahuén</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">5:00 pm</div>
-              <div class="itin-name">Vals y fotorosh</div>
-              <div class="itin-desc">Sistema 3PA</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">7:00 – 10:00 pm</div>
-              <div class="itin-name">Banda</div>
-              <div class="itin-desc">La Genial de Zirahuén</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">10:00 pm</div>
-              <div class="itin-name">Pastel</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">10:30 pm – 12:30 am</div>
-              <div class="itin-name">Norteño</div>
-            </div>
-          </li>
-          <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-card">
-              <div class="itin-time">11:30 pm</div>
-              <div class="itin-name">Cena</div>
-            </div>
-          </li>
+      <div class="itin-list-wrap">
+        <ul class="itin-list">
+          <li><span class="il-time">1:00 pm</span><span class="il-name">Ceremonia religiosa<small>Templo San Pedro y San Pablo</small></span></li>
+          <li><span class="il-time">2:30 pm</span><span class="il-name">Recepción<small>Salón Punta del Cielo</small></span></li>
+          <li><span class="il-time">3:00 pm</span><span class="il-name">Entrada y brindis de los novios</span></li>
+          <li><span class="il-time">3:00 – 4:30 pm</span><span class="il-name">Comida<small>Cantante · Zirahuén</small></span></li>
+          <li><span class="il-time">5:00 pm</span><span class="il-name">Vals y fotorosh<small>Sistema 3PA</small></span></li>
+          <li><span class="il-time">7:00 – 10:00 pm</span><span class="il-name">Banda<small>La Genial de Zirahuén</small></span></li>
+          <li><span class="il-time">10:00 pm</span><span class="il-name">Pastel</span></li>
+          <li><span class="il-time">10:30 pm – 12:30 am</span><span class="il-name">Norteño</span></li>
+          <li><span class="il-time">11:30 pm</span><span class="il-name">Cena</span></li>
         </ul>
       </div>
     </div>
@@ -2568,7 +2520,7 @@ footer .footer-inner{padding-top:60px}
     <!-- Colores a evitar: una bolita que cambia de color en bucle.
          Edita data-colors (n colores). Con 1 color queda fija. -->
     <div class="vc-avoid">
-      <p class="vc-avoid-lbl">Por favor evitar estos colores</p>
+      <p class="vc-avoid-lbl">No usar</p>
       <div class="vc-pair">
         <div class="vc-dot-item"><span class="vc-dot" style="--c:#E22400"></span><span class="vc-dot-name">Rojo</span></div>
         <div class="vc-dot-item"><span class="vc-dot vc-dot--light" style="--c:#EBEBEB"></span><span class="vc-dot-name">Blanco</span></div>
@@ -2786,10 +2738,6 @@ footer .footer-inner{padding-top:60px}
   <!-- KIDS POLICY -->
   <!-- ALBUM QR -->
     <!-- ÁLBUM DE FOTOS (QR → /album → panel-invitados.vercel.app/subir/boda-celeste-hernandez-y-jose-silva) -->
-  <section class="pband" aria-hidden="true" data-top="#FBFAF6" data-bot="#FBFAF6">
-    <div class="pb-img"><i style="background-image:url('fotos/f12.jpg');--pos:50% 42%;--py:42%"></i></div>
-    <div class="pb-sheen"></div>
-  </section>
 
   <section class="section-bg calb" id="album" aria-label="Álbum de fotos">
     <div class="ink-bg ink-bg--hero ink-bg--flip ink-bg--soft" aria-hidden="true"><i></i></div>
@@ -2926,19 +2874,17 @@ function startFlare(){
   const f = document.getElementById('flare'); if(!f || prefersReduced) return;
   const q = x => f.querySelector(x), qa = x => f.querySelectorAll(x);
   f.style.visibility = 'visible';
-  const bloom=q('.fl-bloom'), glow=q('.fl-glow'), streak=q('.fl-streak'), sweep=q('.fl-sweep'), star=q('.fl-star'), ghosts=qa('.fl-ghost'), sps=qa('.fl-sp');
-  gsap.set([bloom,glow,streak,sweep,star,ghosts,sps],{opacity:0});
-  gsap.set(bloom,{scale:.25}); gsap.set(streak,{scaleX:0}); gsap.set(glow,{scaleX:.3}); gsap.set(star,{scale:.2,rotate:-25}); gsap.set(sweep,{xPercent:-130});
+  const bloom=q('.fl-bloom'), glow=q('.fl-glow'), streak=q('.fl-streak'), sweep=q('.fl-sweep'), ghosts=qa('.fl-ghost'), sps=qa('.fl-sp');
+  gsap.set([bloom,glow,streak,sweep,ghosts,sps],{opacity:0});
+  gsap.set(bloom,{scale:.25}); gsap.set(streak,{scaleX:0}); gsap.set(glow,{scaleX:.3}); gsap.set(sweep,{xPercent:-130});
   const tl = gsap.timeline({delay:.05, onComplete:()=>{ f.style.visibility='hidden'; }});
   window.__flare = tl;
-  tl.to(bloom,{opacity:.85,scale:.85,duration:1,ease:'power2.out'},0)
+  tl.to(bloom,{opacity:.95,scale:.95,duration:1,ease:'power2.out'},0)
     .to(bloom,{opacity:0,scale:1.2,duration:1.8,ease:'power2.inOut'},1)
     .to(glow,{opacity:1,scaleX:1,duration:.9,ease:'expo.out'},.1)
     .to(glow,{opacity:0,duration:1.5,ease:'power2.inOut'},1)
     .to(streak,{opacity:1,scaleX:1,duration:.85,ease:'expo.out'},.1)
     .to(streak,{opacity:0,duration:1.3,ease:'power2.inOut'},1)
-    .to(star,{opacity:1,scale:1,rotate:0,duration:.9,ease:'expo.out'},.15)
-    .to(star,{opacity:0,scale:.55,rotate:35,duration:1.4,ease:'power2.in'},1.05)
     .to(sweep,{opacity:1,duration:.8,ease:'power1.out'},.2)
     .to(sweep,{xPercent:250,duration:2.6,ease:'power1.inOut'},.2)
     .to(sweep,{opacity:0,duration:1,ease:'power1.in'},1.8);
@@ -2946,14 +2892,18 @@ function startFlare(){
     tl.fromTo(g,{x:-30*(i+1),opacity:0},{x:46*(i+1),opacity:.9,duration:1.6,ease:'power1.inOut'},.45+i*.08)
       .to(g,{opacity:0,duration:.8,ease:'power1.in'},1.5+i*.08);
   });
-  const pts=[[18,30],[78,26],[30,48],[70,44],[50,58],[12,52],[88,54]];
+  const pts=[[22,30],[76,34],[34,50],[68,46],[50,58],[12,52],[88,54]];
   sps.forEach((p,i)=>{
     gsap.set(p,{left:pts[i][0]+'%',top:pts[i][1]+'%',xPercent:-50,yPercent:-50,scale:0,rotate:0});
-    const sz = .6 + (i%3)*.35;
+    const sz = .45 + (i%3)*.2;
     tl.to(p,{opacity:1,scale:sz,rotate:45,duration:.55,ease:'back.out(2)'},.7+i*.22)
       .to(p,{opacity:0,scale:0,rotate:90,duration:.7,ease:'power2.in'},1.25+i*.22);
   });
 }
+
+document.querySelectorAll('.itin-list li').forEach((li,i)=>{
+  gsap.fromTo(li,{opacity:0,x:i%2?30:-30},{opacity:1,x:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:li,start:'top 92%',once:true}});
+});
 
 // ------ LAUNCH INVITATION â€" se dispara al terminar el sobre ------
 function launchInvitation(){
