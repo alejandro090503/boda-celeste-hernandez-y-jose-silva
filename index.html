@@ -2096,6 +2096,37 @@ span.foil-text{display:inline-block}
 .rsvp-toggle-btn.on-no{background:#f6e3dd;border-color:#c0624c;color:#7a2e1f}
 .rsvp-toggle-btn:disabled{opacity:.55;cursor:not-allowed}
 #rsvp-feedback:not(:empty){display:block}
+
+/* ── Celestial: mensaje + códigos QR de acceso ── */
+.cel-msg{margin:16px 0 4px;text-align:left}
+.cel-msg label{display:block;font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+.cel-msg label small{letter-spacing:.04em;text-transform:none;font-weight:500;opacity:.8}
+.cel-msg textarea{width:100%;min-height:92px;resize:vertical;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(38,62,15,.35);background:#fff;color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.45;outline:none;box-sizing:border-box}
+.cel-msg textarea::placeholder{color:#6E7066}
+.mqr{margin:22px auto 0;max-width:400px;text-align:center}
+.mqr-title{font-family:var(--display);font-size:26px;font-weight:600;color:var(--ink);margin:0 0 4px}
+.mqr-hint{font-family:var(--display);font-style:italic;font-size:17px;line-height:1.5;color:var(--ink-soft);margin:0 auto 14px;max-width:320px}
+.mqr-carousel{position:relative;max-width:340px;margin:0 auto}
+.mqr-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 11%}
+.mqr-track::-webkit-scrollbar{display:none}
+.mqr-card{flex:0 0 78%;scroll-snap-align:center;background:#fff;border:1.5px solid var(--hair-gold);border-radius:14px;padding:16px 12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.18);transform:scale(.92);opacity:.55;transition:transform .35s,opacity .35s;box-sizing:border-box}
+.mqr-card.is-active{transform:none;opacity:1}
+.mqr-img{display:block;width:150px;height:150px;margin:0 auto;border-radius:6px}
+.mqr-name{font-family:var(--display);font-size:21px;font-weight:600;line-height:1.25;color:#1d1d1d;margin:10px 0 0;overflow-wrap:anywhere}
+.mqr-mesa{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8A6A12;margin:6px 0 0}
+.mqr-code{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A12;margin:9px 0 0}
+.mqr-code span{display:block;margin-top:3px;font-family:'Courier New',monospace;font-size:14px;letter-spacing:1.5px;text-transform:none;color:#1d1d1d}
+.mqr-dl{display:inline-block;margin-top:10px;padding:8px 20px;border:1.5px solid var(--hair-gold);border-radius:20px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8A6A12;text-decoration:none}
+.mqr-nav{position:absolute;top:40%;transform:translateY(-50%);z-index:2;width:32px;height:32px;border-radius:50%;border:1px solid var(--hair-gold);background:#fff;color:#8A6A12;font-size:18px;line-height:1;cursor:pointer}
+.mqr-nav--prev{left:-6px}.mqr-nav--next{right:-6px}
+.mqr-nav:disabled{opacity:0;pointer-events:none}
+.mqr-foot{margin-top:12px}
+.mqr-dots{display:flex;justify-content:center;gap:7px}
+.mqr-dots button{width:7px;height:7px;padding:0;border:0;border-radius:4px;background:rgba(138,106,18,.3);cursor:pointer;transition:width .3s,background .3s}
+.mqr-dots button.is-active{width:20px;background:#8A6A12}
+.mqr-count{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);margin:9px 0 0}
+.mqr-carousel.is-single .mqr-nav,.mqr-foot.is-single{display:none}
+.mqr-carousel.is-single .mqr-card{flex-basis:84%;transform:none;opacity:1}
 .rsvp-gracias{max-width:400px;margin:24px auto 0;padding:28px 22px;background:#fff;border:1.5px solid var(--hair-gold);border-radius:16px}
 .rsvp-gracias-icon{color:var(--gold-deep);margin:0 auto 10px;display:block}
 .rsvp-gracias-title{font-family:var(--display);font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.3}
@@ -2777,7 +2808,7 @@ footer .footer-inner{padding-top:60px}
 
 
   <!-- RSVP -->
-    <!-- RSVP · Panel de Invitados, versión "nombres asignados" (link ?i= con token; una tarjeta por persona) -->
+    <!-- RSVP · Panel Celestial / QR, versión "nombres asignados" (link ?i= con token; una tarjeta por persona) -->
   <section id="rsvp" class="section-paper ink-host">
   <div class="ink-bg ink-bg--footer" aria-hidden="true"><i></i></div>
   <div class="container-r">
@@ -2791,6 +2822,7 @@ footer .footer-inner{padding-top:60px}
   <p class="rsvp-dl">Por favor confirma antes del 4 de diciembre de 2026</p>
   <div id="rsvp-bandeja">
     <div class="rsvp-personas" id="rsvp-personas"></div>
+    <div class="cel-msg" id="celMsgWrap"><label for="celMensaje">Mensaje para los novios <small>(opcional)</small></label><textarea id="celMensaje" maxlength="1000" placeholder="Escríbeles unas palabras a Celeste y Gregorio…"></textarea></div>
     <button class="rsvp-btn" id="rsvp-confirm-btn" type="button"><span id="rsvp-btn-text">Confirmar asistencia</span></button>
   </div>
   <div class="rsvp-gracias" id="rsvp-gracias" style="display:none">
@@ -2799,6 +2831,16 @@ footer .footer-inner{padding-top:60px}
     <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
     <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button">Modificar mi respuesta</button>
   </div>
+  <div class="mqr" id="mqrSec" style="display:none">
+        <p class="mqr-title">Tus códigos de acceso</p>
+        <p class="mqr-hint" id="mqrHint"></p>
+        <div class="mqr-carousel" id="mqrCarousel">
+          <button class="mqr-nav mqr-nav--prev" id="mqrPrev" type="button" aria-label="Anterior">&lsaquo;</button>
+          <div class="mqr-track" id="mqrTrack"></div>
+          <button class="mqr-nav mqr-nav--next" id="mqrNext" type="button" aria-label="Siguiente">&rsaquo;</button>
+        </div>
+        <div class="mqr-foot" id="mqrFoot"><div class="mqr-dots" id="mqrDots"></div><p class="mqr-count" id="mqrCount"></p></div>
+      </div>
   <p id="rsvp-feedback"></p>
   </div>
 </section>
@@ -4093,11 +4135,83 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
 }catch(e){console.error("album",e)}})();
 </script>
 <script>
-/* ── RSVP · Panel de Invitados (nombres asignados: una tarjeta por persona) ── */
+/* ── Celestial: códigos QR de acceso (el panel los entrega cuando se generan) ── */
+window.CelQR=(function(){
+  var LIB='https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
+  var sec=document.getElementById('mqrSec'),track=document.getElementById('mqrTrack'),dots=document.getElementById('mqrDots');
+  if(!sec)return{pintar:function(){},ocultar:function(){}};
+  var cards=[],idx=0,gen=0;
+  function lib(cb){
+    if(window.QRCode)return cb();
+    var sc=document.getElementById('qrcode-lib');
+    if(!sc){sc=document.createElement('script');sc.id='qrcode-lib';sc.src=LIB;document.head.appendChild(sc);}
+    sc.addEventListener('load',function(){if(window.QRCode)cb();});
+  }
+  function irA(i,suave){var c=cards[i];if(!c)return;track.scrollTo({left:c.offsetLeft-(track.clientWidth-c.clientWidth)/2,behavior:suave===false?'auto':'smooth'});}
+  function marcar(){
+    if(!cards.length)return;
+    var centro=track.scrollLeft+track.clientWidth/2,mejor=0,dist=Infinity;
+    cards.forEach(function(c,i){var d=Math.abs(c.offsetLeft+c.clientWidth/2-centro);if(d<dist){dist=d;mejor=i;}});
+    idx=mejor;
+    cards.forEach(function(c,i){c.classList.toggle('is-active',i===mejor);});
+    Array.prototype.forEach.call(dots.children,function(d,k){d.classList.toggle('is-active',k===mejor);});
+    document.getElementById('mqrCount').textContent='Pase '+(mejor+1)+' de '+cards.length;
+    document.getElementById('mqrPrev').disabled=mejor===0;
+    document.getElementById('mqrNext').disabled=mejor===cards.length-1;
+  }
+  var raf=0;
+  track.addEventListener('scroll',function(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;marcar();});},{passive:true});
+  document.getElementById('mqrPrev').addEventListener('click',function(){irA(Math.max(0,idx-1));});
+  document.getElementById('mqrNext').addEventListener('click',function(){irA(Math.min(cards.length-1,idx+1));});
+  function ocultar(){gen++;sec.style.display='none';}
+  function pintar(qrs,pendientes){
+    var g=++gen,hint=document.getElementById('mqrHint'),car=document.getElementById('mqrCarousel'),foot=document.getElementById('mqrFoot');
+    track.innerHTML='';dots.innerHTML='';cards=[];
+    if(!qrs||!qrs.length){
+      if(!pendientes){sec.style.display='none';return;}
+      hint.textContent='Tus códigos de acceso aparecerán aquí cuando se acerque el evento. Vuelve a abrir tu invitación unos días antes.';
+      car.style.display='none';foot.style.display='none';sec.style.display='block';return;
+    }
+    hint.textContent=qrs.length===1?'Presenta este código en la entrada.':'Presenta un código por persona en la entrada.';
+    car.style.display='';foot.style.display='';sec.style.display='block';
+    var single=qrs.length<2;car.classList.toggle('is-single',single);foot.classList.toggle('is-single',single);
+    lib(function(){
+      if(g!==gen)return;
+      track.innerHTML='';dots.innerHTML='';cards=[];
+      qrs.forEach(function(q,i){
+        var card=document.createElement('div');card.className='mqr-card';
+        var img=document.createElement('img');img.className='mqr-img';img.alt='Código QR de '+q.nombre_persona;img.width=150;img.height=150;card.appendChild(img);
+        var nm=document.createElement('p');nm.className='mqr-name';nm.textContent=q.nombre_persona;card.appendChild(nm);
+        if(q.mesa){var me=document.createElement('p');me.className='mqr-mesa';me.textContent='Mesa '+q.mesa;card.appendChild(me);}
+        var cod=document.createElement('p');cod.className='mqr-code';cod.textContent='Código de respaldo';
+        var sp=document.createElement('span');sp.textContent=q.codigo;cod.appendChild(sp);card.appendChild(cod);
+        var dl=document.createElement('a');dl.className='mqr-dl';dl.textContent='Descargar';dl.download='Pase Celeste y Gregorio - '+q.nombre_persona+'.png';card.appendChild(dl);
+        window.QRCode.toDataURL(q.codigo,{width:480,margin:2,errorCorrectionLevel:'M',color:{dark:'#1F2A14',light:'#FFFFFF'}},function(err,url){if(err)return;img.src=url;dl.href=url;});
+        card.addEventListener('click',function(e){if(i!==idx&&e.target!==dl)irA(i);});
+        track.appendChild(card);cards.push(card);
+        var dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label',(i+1)+'');
+        dot.addEventListener('click',function(){irA(i);});dots.appendChild(dot);
+      });
+      idx=0;requestAnimationFrame(function(){irA(0,false);marcar();});
+    });
+  }
+  return{pintar:pintar,ocultar:ocultar};
+})();
+</script>
+<script>
+/* ── RSVP · Panel Celestial / QR (nombres asignados: una tarjeta por persona) ── */
 (function(){
-  var API = 'https://panel-invitados.vercel.app/api/confirmar';
+  var API = 'https://panel-invitados-qr.vercel.app/api/confirmar';
   var URL_BODA = 'https://boda-celeste-hernandez-y-jose-silva.vercel.app';
-  var DEADLINE = new Date('2026-12-04T23:59:59-06:00');
+  /* La fecha límite la manda el panel (se amplía desde ahí). Este respaldo solo
+     se usa si el panel no responde: nunca se congela al cargar. */
+  var RESPALDO = new Date('2026-12-04T23:59:59-06:00').getTime();
+  function fijarFecha(iso, desdePanel){
+    var lim = desdePanel ? (iso ? new Date(iso).getTime() : null) : RESPALDO;
+    if(lim !== null && isNaN(lim)) lim = RESPALDO;
+    frozen = lim !== null && Date.now() > lim;
+  }
+  var msgEl = document.getElementById('celMensaje');
   var qs = new URLSearchParams(location.search);
 
   /* WhatsApp corta la URL en el primer espacio: el panel manda ?i= (base64url de "nombre|pases|menores").
@@ -4115,7 +4229,7 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
 
   var para = qs.get('i') ? decodeInvite(qs.get('i')) : '';
   if (!para) para = (qs.get('para') || '').trim();
-  var frozen = new Date() > DEADLINE;
+  var frozen = false;
   var bloqueado = false, listo = false, enviando = false;
   var asignados = [], choices = {};
 
@@ -4133,6 +4247,7 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
     btn.disabled = off || enviando;
     editarBtn.disabled = frozen || bloqueado;
     personas.querySelectorAll('button').forEach(function(b){ b.disabled = off; });
+    if (msgEl) msgEl.disabled = off;
     if (frozen) btnText.textContent = 'Confirmaciones cerradas';
     else if (bloqueado) btnText.textContent = 'Confirmaciones cerradas';
   }
@@ -4171,8 +4286,9 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
   }
   editarBtn.addEventListener('click', function(){
     if (frozen || bloqueado) return;
-    graciasEl.style.display = 'none'; bandejaEl.style.display = ''; setFeedback('');
+    CelQR.ocultar(); graciasEl.style.display = 'none'; bandejaEl.style.display = ''; setFeedback('');
   });
+  function pintaQrs(est, qrs, pend){ if (est === 'confirmado') CelQR.pintar(qrs || [], pend); else CelQR.ocultar(); }
 
   function confetti(){
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -4188,7 +4304,6 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
 
   if (para){ hi.textContent = para; paraBox.style.display = ''; }
   pintarEstado();
-  if (frozen) setFeedback('La fecha límite para confirmar ya pasó.');
 
   if (!para){
     setFeedback('Abre el enlace personalizado que te enviaron para confirmar tu asistencia.');
@@ -4196,6 +4311,8 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
     fetch(API + '?nombre=' + encodeURIComponent(para) + '&url_boda=' + encodeURIComponent(URL_BODA))
       .then(function(r){ return r.json(); })
       .then(function(d){
+        var boda = d && d.boda;
+        fijarFecha(boda ? boda.fecha_limite_rsvp : null, !!boda);
         var inv = d && d.invitado;
         /* Si el panel no la conoce no se deja confirmar: crearía una invitación nueva */
         if (!inv){ setFeedback('No encontramos tu invitación. Pide a los novios que te envíen tu enlace de nuevo.'); return; }
@@ -4205,11 +4322,14 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
         var n = asignados.length;
         note.innerHTML = '<b>' + n + (n === 1 ? ' pase reservado' : ' pases reservados') + '</b>';
         note.style.display = '';
+        if (inv.mensaje && msgEl) msgEl.value = inv.mensaje;
         if (inv.estado === 'confirmado' || inv.estado === 'declino'){
           var conf = (inv.nombres_confirmados || []).map(clave);
           asignados.forEach(function(nm, i){ choices[i] = inv.estado === 'declino' ? 'no' : (conf.indexOf(clave(nm)) >= 0 ? 'yes' : 'no'); });
           btnText.textContent = 'Actualizar respuesta';
           mostrarGracias(inv.estado, asignados.filter(function(_, i){ return choices[i] === 'yes'; }));
+          var qrs = d.qrs || [];
+          pintaQrs(inv.estado, qrs, inv.estado === 'confirmado' && !qrs.length && !(boda && boda.qrs_generados_en));
         }
         if (inv.bloqueado){
           bloqueado = true;
@@ -4217,9 +4337,9 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
         }
         listo = true;
         pintarPersonas();
-        if (frozen) setFeedback('La fecha límite para confirmar ya pasó.');
+        if (frozen) setFeedback('El periodo de confirmación ya cerró.');
       })
-      .catch(function(){ setFeedback('No pudimos cargar tu invitación. Recarga la página.'); });
+      .catch(function(){ fijarFecha(null, false); setFeedback('No pudimos cargar tu invitación. Recarga la página.'); });
   }
 
   btn.addEventListener('click', function(){
@@ -4231,13 +4351,14 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
     var estado = si.length ? 'confirmado' : 'declino';
     enviando = true; pintarEstado(); btnText.textContent = 'Enviando…'; setFeedback('');
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: para, url_boda: URL_BODA, estado: estado, pases_confirmados: si.length, nombres_confirmados: si }) })
+      body: JSON.stringify({ nombre: para, url_boda: URL_BODA, estado: estado, pases_confirmados: si.length, nombres_confirmados: si, mensaje: msgEl ? msgEl.value.trim() : '' }) })
       .then(function(r){ return r.json().catch(function(){ return null; }).then(function(d){ return { ok: r.ok, d: d }; }); })
       .then(function(res){
         enviando = false;
         if (res.ok && res.d && res.d.ok){
           btnText.textContent = 'Actualizar respuesta'; pintarEstado();
           mostrarGracias(estado, si);
+          pintaQrs(estado, res.d.qrs || [], !!res.d.qrs_pendientes);
           if (estado === 'confirmado') confetti();
           return;
         }
@@ -4245,7 +4366,8 @@ document.querySelectorAll('.foil-text').forEach((el,i)=>{ el.style.animationDela
         var err = res.d && res.d.error;
         if (err === 'respuestas_cerradas'){ bloqueado = true; pintarEstado(); setFeedback('Las confirmaciones de esta invitación ya están cerradas. Si necesitas un cambio, contacta a los novios.'); return; }
         pintarEstado();
-        setFeedback(err === 'no_match' ? 'No pudimos identificar tu invitación. Abre el enlace personalizado que te enviaron.'
+        if (err === 'rsvp_cerrado'){ frozen = true; pintarEstado(); setFeedback('El periodo de confirmación ya cerró.'); return; }
+        setFeedback(err === 'no_match' || err === 'invitacion_no_disponible' ? 'No pudimos identificar tu invitación. Abre el enlace personalizado que te enviaron.'
           : err === 'invitacion_borrada' ? 'Esta invitación ya no está activa. Contacta a los novios para que te envíen un enlace nuevo.'
           : 'No pudimos registrar tu respuesta. Intenta de nuevo.');
       })
