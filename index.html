@@ -2238,6 +2238,11 @@ footer .footer-inner{padding-top:60px}
 .pband{height:min(64svh,560px)}
 .loc-note{margin:22px auto 28px}
 .locs-grid{margin-bottom:44px}
+.rsvp-respeta{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto 0;max-width:420px;padding:10px 16px;border:1px solid rgba(179,38,30,.35);border-radius:12px;background:rgba(179,38,30,.06);color:#B3261E;font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.35;text-align:left}
+.rsvp-respeta svg{flex:0 0 auto}
+.kids-policy{text-align:center}.kids-inner{max-width:640px;margin:0 auto}.kids-icon{display:flex;justify-content:center;margin:14px 0 10px}
+.kids-text{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(20px,5vw,23px);line-height:1.5;color:var(--ink)}
+.kids-policy h2{font-size:clamp(30px,8vw,46px);margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -2801,6 +2806,22 @@ footer .footer-inner{padding-top:60px}
   <!-- ALBUM QR -->
     <!-- ÁLBUM DE FOTOS (QR → /album → panel-invitados.vercel.app/subir/boda-celeste-hernandez-y-jose-silva) -->
 
+  <!-- SOLO ADULTOS -->
+  <section class="section-paper kids-policy" id="adultos">
+    <div class="container kids-inner">
+      <div class="eyebrow">Una nota cariñosa</div>
+      <h2 class="foil-text">Evento exclusivo para adultos</h2>
+      <div class="kids-icon">
+        <svg width="64" height="64" viewBox="0 0 72 72" fill="none" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+          <circle cx="36" cy="36" r="28"/>
+          <path d="M36 16 Q24 28 24 40 Q24 52 36 56 Q48 52 48 40 Q48 28 36 16 Z" fill="var(--gold-soft)" fill-opacity=".18"/>
+          <path d="M36 26 L36 42"/><circle cx="36" cy="46" r="2" fill="var(--gold)"/>
+        </svg>
+      </div>
+      <p class="kids-text">Agradecemos su comprensión al considerar que esta celebración es exclusivamente para adultos.</p>
+    </div>
+  </section>
+
   <section class="pband" aria-hidden="true" data-top="#FBFAF6" data-bot="#FBFAF6">
     <div class="pb-img"><i style="background-image:url('fotos/f25.jpg');--pos:50% 30%;--py:34%"></i></div>
     <div class="pb-sheen"></div>
@@ -2838,6 +2859,7 @@ footer .footer-inner{padding-top:60px}
   </div>
   <p class="rsvp-note" id="rsvp-pases-note" style="display:none"></p>
   <p class="rsvp-dl">Por favor confirma antes del 4 de diciembre de 2026</p>
+  <p class="rsvp-respeta"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span>Favor de respetar el número de pases asignados.</span></p>
   <div id="rsvp-bandeja">
     <div class="rsvp-personas" id="rsvp-personas"></div>
     <div class="cel-msg" id="celMsgWrap"><label for="celMensaje">Mensaje para los novios <small>(opcional)</small></label><textarea id="celMensaje" maxlength="1000" placeholder="Escríbeles unas palabras a Celeste y Gregorio…"></textarea></div>
