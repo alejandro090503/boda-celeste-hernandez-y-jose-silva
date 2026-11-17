@@ -2086,6 +2086,8 @@ span.foil-text{display:inline-block}
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
   animation:cParaSweep 7s ease-in-out infinite;overflow-wrap:anywhere}
 @keyframes cParaSweep{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+/* el brillo crema de legibilidad se pintaba encima del dorado y lo deslavaba */
+#rsvp .rsvp-para .rsvp-hi{text-shadow:none!important;filter:drop-shadow(0 1px 6px rgba(251,250,246,.9))}
 @media(prefers-reduced-motion:reduce){#rsvp .rsvp-para .rsvp-hi{animation:none;background-position:50% 0}}
 .rsvp-note{margin:12px auto 0}
 .rsvp-note b{display:inline-block;padding:7px 18px;padding-left:calc(18px + .24em);border:1px solid var(--hair-gold);border-radius:999px;background:#fff;font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
