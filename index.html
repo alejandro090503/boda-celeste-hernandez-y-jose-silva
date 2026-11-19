@@ -2254,6 +2254,10 @@ footer .footer-inner{padding-top:60px}
 .kids-policy{text-align:center}.kids-inner{max-width:640px;margin:0 auto}.kids-icon{display:flex;justify-content:center;margin:14px 0 10px}
 .kids-text{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(20px,5vw,23px);line-height:1.5;color:var(--ink)}
 .kids-policy h2{font-size:clamp(30px,8vw,46px);margin-bottom:6px}
+.rsvp-note{margin:14px auto 4px}
+.rsvp-note b{display:inline-flex;align-items:center;gap:14px;padding:8px 26px 8px 22px;letter-spacing:normal;text-transform:none;border:2px solid #1F5FA8;border-radius:18px;background:#fff;color:#1F5FA8;box-shadow:0 8px 22px -12px rgba(31,95,168,.55)}
+.rsvp-pn{font-family:var(--display);font-weight:700;font-size:54px;line-height:1;color:#1F5FA8}
+.rsvp-pl{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:#1F5FA8;text-align:left;line-height:1.15;max-width:7.5em}
 </style>
 </head>
 <body>
@@ -4312,7 +4316,7 @@ window.CelQR=(function(){
   }
   function pintarEncabezado(){
     if (para){ hi.textContent = para; paraBox.style.display = ''; }
-    note.innerHTML = '<b>' + pasesAsignados + (pasesAsignados === 1 ? ' pase reservado' : ' pases reservados') + '</b>';
+    note.innerHTML = '<b><span class="rsvp-pn">' + pasesAsignados + '</span><span class="rsvp-pl">' + (pasesAsignados === 1 ? 'pase reservado' : 'pases reservados') + '</span></b>';
     note.style.display = para ? '' : 'none';
   }
   function pintarEstado(){
