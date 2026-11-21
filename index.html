@@ -4285,7 +4285,8 @@ window.CelQR=(function(){
       var bin = atob(b64), bytes = new Uint8Array(bin.length);
       for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
       var p = new TextDecoder().decode(bytes).split('|');
-      return { para: (p[0] || '').trim(), pases: parseInt(p[1], 10) || 1 };
+      /* pases = adultos + menores: cada uno lleva su nombre en la confirmación */
+      return { para: (p[0] || '').trim(), pases: (parseInt(p[1], 10) || 1) + (parseInt(p[2], 10) || 0) };
     } catch (e) { return null; }
   }
   var qs = new URLSearchParams(location.search);
@@ -4417,7 +4418,8 @@ window.CelQR=(function(){
         var inv = d && d.invitado;
         /* Si el panel no la conoce no se deja confirmar */
         if (!inv){ anulada = true; pintarEstado(); note.style.display = 'none'; setFeedback('No encontramos tu invitación. Pide a los novios que te envíen tu enlace de nuevo.'); return; }
-        if (typeof inv.pases === 'number' && inv.pases > 0 && inv.pases <= 20) pasesAsignados = inv.pases;
+        /* Los menores también ocupan pase y llevan su nombre: total = pases + menores */
+        if (typeof inv.pases === 'number' && inv.pases > 0) pasesAsignados = Math.min(30, inv.pases + (inv.pases_menores || 0));
         if (pasesAUsar > pasesAsignados) pasesAUsar = pasesAsignados;
         pintarEncabezado();
         if (inv.mensaje && msgEl) msgEl.value = inv.mensaje;
